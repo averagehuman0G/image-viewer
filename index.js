@@ -31,4 +31,12 @@ function getSubImages(sub) {
 }
 
 //make the image Observable
-const images;
+// const images;
+
+const nexts = Observable.fromEvent(nextBtn, 'click');
+const backs = Observable.fromEvent(backBtn, 'click');
+const selects = Observable.fromEvent(selectRedditSub, 'change').map(e => e.target.value);
+
+const actions = Observable.merge(nexts, backs, selects);
+
+actions.subscribe(data => console.log(data));
